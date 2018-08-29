@@ -8,18 +8,11 @@ RUN apk --no-cache --update add bash curl less groff jq python py-pip && \
   pip install --no-cache-dir --upgrade pip && \
   pip install --no-cache-dir awscli==$CLI_VERSION
 
-  
-ENV user=jenkins
-ENV group=jenkins
-ENV uid=10000
-ENV gid=10000
+RUN addgroup -g 10000 jenkins
+RUN adduser -h /home/jenkins -u 10000 -G jenkins -D jenkins
 
-ENV HOME /home/${user}
-RUN addgroup -g ${gid} ${group}
-RUN adduser -h $HOME -u ${uid} -G ${group} -D ${user}
+USER jenkins
+RUN mkdir /home/jenkins/.aws
 
-USER ${user}
-RUN mkdir /home/${user}/.aws
-
-VOLUME /home/${user}/.aws
-WORKDIR /home/${user}
+VOLUME /home/jenkins/.aws
+WORKDIR /home/jenkins
