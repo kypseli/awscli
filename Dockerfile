@@ -7,5 +7,3 @@ ENV CLI_VERSION=${CLI_VERSION}
 RUN apk --no-cache --update add bash curl less groff jq python py-pip && \
   pip install --no-cache-dir --upgrade pip && \
   pip install --no-cache-dir awscli==$CLI_VERSION
-
-RUN mkdir /root/.aws
