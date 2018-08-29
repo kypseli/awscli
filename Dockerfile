@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:3.7
 MAINTAINER kmadel@cloudbees.com
 
 ARG CLI_VERSION=1.16.3
