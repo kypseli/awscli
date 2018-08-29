@@ -9,10 +9,10 @@ RUN apk --no-cache --update add bash curl less groff jq python py-pip && \
   pip install --no-cache-dir awscli==$CLI_VERSION
 
   
-ARG user=jenkins
-ARG group=jenkins
-ARG uid=10000
-ARG gid=10000
+ENV user=jenkins
+ENV group=jenkins
+ENV uid=10000
+ENV gid=10000
 
 ENV HOME /home/${user}
 RUN addgroup -g ${gid} ${group}
